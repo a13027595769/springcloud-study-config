@@ -1,12 +1,39 @@
-﻿server: 
-  port: 8202
-spring:
-  profiles: test #开发环境
-  application:
-    name: springcloud-study-config-client
+﻿#server: 
+#  port: 8202
+#spring:
+#  profiles: test #开发环境
+#  application:
+#    name: springcloud-study-config-client
 
+#eureka:
+#  client:
+#    service-url:
+#     defaultZone: eureka7001.com:7001/eureka
+#请保存为UTF-8格式
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 8201
+spring:
+  profiles: dev
+  application:
+    name: springcloud-study-config-dev
 eureka:
   client:
     service-url:
-      defaultZone: eureka7001.com:7001/eureka
-#请保存为UTF-8格式
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+---
+server:
+  port: 8202
+spring:
+  profiles: test
+  application:
+    name: springcloud-study-config-dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
